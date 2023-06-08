@@ -18,31 +18,37 @@
 
 2. 打开您的 Xcode 工程项目，选择要运行的 target , 选中 **Build Phases** 项。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/8c99bd1355929c9420d339fbc1c99d4e.png)
+![]()
 
 3. 单击 Link Binary with Libraries 项展开，单击底下的“+”号图标去添加依赖库。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/8c99bd1355929c9420d339fbc1c99d4e.png)
+![]()
 
 4. 依次添加下载的 **TCCCSDK.Framework**、**TXFFmpeg.xcframework**、**TXSoundTouch.xcframework**、及其所需依赖库 **GLKit.framework**、**AssetsLibrary.framework**、**SystemConfiguration.framework**、**libsqlite3.0.tbd**、**CoreTelephony.framework**、**AVFoundation.framework**、**OpenGLES.framework**、**Accelerate.framework**、**MetalKit.framework**、**libresolv.tbd**、**MobileCoreServices.framework**、**libc++.tbd**、**CoreMedia.framework**。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/5ddbf9424b6f5157b17a61f368b54f20.png)
+![]()
 
 5. 单击 General，选择 **Frameworks,Libraries,and Embedded Content**，检查 **TCCCSDK.framework** 所需要动态库 **TXFFmpeg.xcframework**、**TXSoundTouch.xcframework**是否已经添加，是否正确选择选择 Embed & Sign，如果没有单击底下的“**+**”号图标依次添加。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/5ddbf9424b6f5157b17a61f368b54f20.png)
+![]()
 
+6. 在工程target中Build Settings的Other Linker Flags增加-ObjC配置。
+
+7. 配置 Header Search Paths
+```
+$(PROJECT_DIR)/tccc-agent-ios-example/framework/TCCCSDK.framework/Headers
+```
 
 ## 配置 App 权限
 1. 如需使用 SDK 提供的音视频功能，需要给 App 授权麦克风的使用权限。在 App 的 Info.plist 中添加以下两项，分别对应麦克风在系统弹出授权对话框时的提示信息。
   - Privacy - Microphone Usage Description，并填入麦克风使用目的提示语。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/8c99bd1355929c9420d339fbc1c99d4e.png)
+![]()
 
 
 2. 如需 App 进入后台仍然运行相关功能，可在 XCode 中选中当前工程项目，并在 Capabilities 下将设置项  Background Modes 设定为 ON，并勾选 Audio，AirPlay and Picture in Picture ，如下图所示：
 
-![](https://qcloudimg.tencent-cloud.cn/raw/8c99bd1355929c9420d339fbc1c99d4e.png)
+![]()
 
 
 

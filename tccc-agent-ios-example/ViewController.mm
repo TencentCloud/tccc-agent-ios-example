@@ -6,16 +6,20 @@
 //
 
 #import "ViewController.h"
+#include "tccc/include/ITCCCWorkstation.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) UITextField *usernameField;
 @property (nonatomic, strong) UITextField *passwordField;
 @property (nonatomic, strong) UIButton *loginButton;
+@property (nonatomic, strong) UITextView *txtVersion;
 
 @end
 
 @implementation ViewController
+using namespace tccc;
+ITCCCWorkstation* tcccSDK;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,6 +42,22 @@
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.loginButton addTarget:self action:@selector(loginButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginButton];
+    
+    tcccSDK = getTCCCShareInstance();
+    const char *  version = tcccSDK->getSDKVersion();
+    
+    // 创建版本文本
+    self.txtVersion = [[UITextView alloc] initWithFrame:CGRectMake(20, 750, self.view.bounds.size.width - 40, 40)];
+    self.txtVersion.text =  [NSString stringWithUTF8String:version];
+    self.txtVersion.textAlignment = NSTextAlignmentCenter;
+    self.txtVersion.font = [UIFont systemFontOfSize:12];
+    self.txtVersion.textColor = [UIColor blackColor];
+    self.txtVersion.editable = false;
+    self.txtVersion.dataDetectorTypes = UIDataDetectorTypeAll;
+    // 添加UITextView到视图中
+    [self.view addSubview:self.txtVersion];
+    
+    NSLog(@"tccc SDK version: %s",version);
 }
 
 - (void)loginButtonTapped:(UIButton *)sender {
