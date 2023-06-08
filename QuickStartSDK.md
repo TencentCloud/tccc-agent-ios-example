@@ -34,10 +34,11 @@
 
 6. 在工程target中Build Settings的Other Linker Flags增加-ObjC配置。
 
-7. 配置 Header Search Paths
+7. 配置 **Header Search Paths**。如下类似输入
 ```
 $(PROJECT_DIR)/tccc-agent-ios-example/framework/TCCCSDK.framework/Headers
 ```
+![]()
 
 ## 配置 App 权限
 1. 如需使用 SDK 提供的音视频功能，需要给 App 授权麦克风的使用权限。在 App 的 Info.plist 中添加以下两项，分别对应麦克风在系统弹出授权对话框时的提示信息。
@@ -53,6 +54,20 @@ $(PROJECT_DIR)/tccc-agent-ios-example/framework/TCCCSDK.framework/Headers
 
 
 ## 代码实现
+
+目前我们只提供了通过 C++ 接口，可以用下面代码引入头文件
+
+```c++
+// 引入C++头文件
+#include "tccc/include/ITCCCWorkstation.h"
+// 使用tccc命名空间
+using namespace tccc;
+// 获取tcccSDK 单例
+ITCCCWorkstation* tcccSDK = getTCCCShareInstance();
+// 获取SDK版本号
+const char *  version = tcccSDK->getSDKVersion();
+
+```
 
 具体编码实现可参考 [API 概览以及示例](api.md)
 
