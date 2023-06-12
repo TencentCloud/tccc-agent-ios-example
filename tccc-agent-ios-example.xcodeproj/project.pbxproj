@@ -14,8 +14,6 @@
 		E1186E472A146E66004A01F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1186E452A146E66004A01F8 /* LaunchScreen.storyboard */; };
 		E1186E4A2A146E66004A01F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1186E492A146E66004A01F8 /* main.m */; };
 		E1186E512A1488E4004A01F8 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1186E502A1488E4004A01F8 /* ViewController.mm */; };
-		E1186E552A14AB33004A01F8 /* Calling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1186E542A14AB33004A01F8 /* Calling.storyboard */; };
-		E1186E5E2A14ADFA004A01F8 /* CallingViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1186E5C2A14ADFA004A01F8 /* CallingViewController.mm */; };
 		E18AEE252A31B05400AB1DC5 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18AEE242A31B05400AB1DC5 /* GLKit.framework */; };
 		E18AEE272A31B05F00AB1DC5 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18AEE262A31B05F00AB1DC5 /* AssetsLibrary.framework */; };
 		E18AEE292A31B06800AB1DC5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18AEE282A31B06700AB1DC5 /* SystemConfiguration.framework */; };
@@ -35,6 +33,7 @@
 		E18AEE422A31B0E100AB1DC5 /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E18AEE202A31B04400AB1DC5 /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E18AEE472A31B43100AB1DC5 /* TCCCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18AEE1E2A31B04400AB1DC5 /* TCCCSDK.framework */; };
 		E18AEE482A31B43100AB1DC5 /* TCCCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E18AEE1E2A31B04400AB1DC5 /* TCCCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E18AEE4D2A33001200AB1DC5 /* GenerateTestUserToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E18AEE4C2A33001100AB1DC5 /* GenerateTestUserToken.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,9 +65,6 @@
 		E1186E482A146E66004A01F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1186E492A146E66004A01F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1186E502A1488E4004A01F8 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
-		E1186E542A14AB33004A01F8 /* Calling.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calling.storyboard; sourceTree = "<group>"; };
-		E1186E5C2A14ADFA004A01F8 /* CallingViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CallingViewController.mm; sourceTree = "<group>"; };
-		E1186E5D2A14ADFA004A01F8 /* CallingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallingViewController.h; sourceTree = "<group>"; };
 		E18AEE1E2A31B04400AB1DC5 /* TCCCSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TCCCSDK.framework; path = "tccc-agent-ios-example/framework/TCCCSDK.framework"; sourceTree = "<group>"; };
 		E18AEE1F2A31B04400AB1DC5 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = "tccc-agent-ios-example/framework/TXFFmpeg.xcframework"; sourceTree = "<group>"; };
 		E18AEE202A31B04400AB1DC5 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = "tccc-agent-ios-example/framework/TXSoundTouch.xcframework"; sourceTree = "<group>"; };
@@ -85,6 +81,8 @@
 		E18AEE382A31B0B300AB1DC5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E18AEE3A2A31B0BC00AB1DC5 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		E18AEE3C2A31B0C300AB1DC5 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E18AEE4C2A33001100AB1DC5 /* GenerateTestUserToken.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateTestUserToken.m; sourceTree = "<group>"; };
+		E18AEE4E2A33002400AB1DC5 /* GenerateTestUserToken.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateTestUserToken.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +132,7 @@
 		E1186E362A146E64004A01F8 /* tccc-agent-ios-example */ = {
 			isa = PBXGroup;
 			children = (
-				E1186E5D2A14ADFA004A01F8 /* CallingViewController.h */,
-				E1186E5C2A14ADFA004A01F8 /* CallingViewController.mm */,
+				E18AEE4B2A32FFA500AB1DC5 /* Debug */,
 				E1186E502A1488E4004A01F8 /* ViewController.mm */,
 				E1186E372A146E64004A01F8 /* AppDelegate.h */,
 				E1186E382A146E64004A01F8 /* AppDelegate.m */,
@@ -147,7 +144,6 @@
 				E1186E452A146E66004A01F8 /* LaunchScreen.storyboard */,
 				E1186E482A146E66004A01F8 /* Info.plist */,
 				E1186E492A146E66004A01F8 /* main.m */,
-				E1186E542A14AB33004A01F8 /* Calling.storyboard */,
 			);
 			path = "tccc-agent-ios-example";
 			sourceTree = "<group>";
@@ -173,6 +169,15 @@
 				E18AEE202A31B04400AB1DC5 /* TXSoundTouch.xcframework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E18AEE4B2A32FFA500AB1DC5 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				E18AEE4C2A33001100AB1DC5 /* GenerateTestUserToken.m */,
+				E18AEE4E2A33002400AB1DC5 /* GenerateTestUserToken.h */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,7 +241,6 @@
 				E1186E472A146E66004A01F8 /* LaunchScreen.storyboard in Resources */,
 				E1186E442A146E66004A01F8 /* Assets.xcassets in Resources */,
 				E1186E422A146E64004A01F8 /* Main.storyboard in Resources */,
-				E1186E552A14AB33004A01F8 /* Calling.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1186E5E2A14ADFA004A01F8 /* CallingViewController.mm in Sources */,
+				E18AEE4D2A33001200AB1DC5 /* GenerateTestUserToken.m in Sources */,
 				E1186E512A1488E4004A01F8 /* ViewController.mm in Sources */,
 				E1186E392A146E64004A01F8 /* AppDelegate.m in Sources */,
 				E1186E4A2A146E66004A01F8 /* main.m in Sources */,

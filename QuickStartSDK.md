@@ -79,6 +79,17 @@ TCCC 的日志默认压缩加密，后缀为 .log。
 - ios：
 	- 日志路径：**sandbox/Documents/tccc** 
 
+### 在ios下回调是否都在主线程，
+目前在ios下回调都不在主线程，需要业务层面上判断并且把他转为主线线程
+```oc
+if ([NSThread isMainThread]) {
+    // 在主线程，直接可以处理
+    return;
+}
+dispatch_async(dispatch_get_main_queue(), ^{
+    // 回调在非主线程。
+});
+```
 
 ### 发起呼叫报 408 或者 503 错误，如何处理？
 
