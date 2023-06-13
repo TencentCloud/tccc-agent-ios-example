@@ -1,5 +1,4 @@
 # 快速集成腾讯云呼叫中心 ios Agent SDK
-
     本文主要介绍如何快速地将腾讯云呼叫中心 ios Agent SDK 集成到您的项目中，只要按照如下步骤进行配置，就可以完成 SDK 的集成工作。
 
 ## 开发环境要求
@@ -12,7 +11,7 @@
 ## 集成 SDK
 
 ### 手动下载
-    目前我们暂时还未发布到 CocoaPods ，您只能手动下载 SDK 集成到工程里：
+    目前我们暂时还未发布到 CocoaPods ，您只能手动下载 SDK 集成到工程里。
 
 1. 下载最新版本 [TCCC Agent SDK](https://tccc.qcloud.com/assets/doc/Agent/CppSDKRelease/TCCCSDK_ios_last.zip)。
 
