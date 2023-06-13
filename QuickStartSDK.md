@@ -26,11 +26,11 @@
 
 4. 依次添加下载的 **TCCCSDK.Framework**、**TXFFmpeg.xcframework**、**TXSoundTouch.xcframework**、及其所需依赖库 **GLKit.framework**、**AssetsLibrary.framework**、**SystemConfiguration.framework**、**libsqlite3.0.tbd**、**CoreTelephony.framework**、**AVFoundation.framework**、**OpenGLES.framework**、**Accelerate.framework**、**MetalKit.framework**、**libresolv.tbd**、**MobileCoreServices.framework**、**libc++.tbd**、**CoreMedia.framework**。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/f6d263c670275ed0b78884641b5ed493.png)
+![](https://qcloudimg.tencent-cloud.cn/raw/1bc89e71916a5dd9aa3623e36060df40.png)
 
 5. 单击 General，选择 **Frameworks,Libraries,and Embedded Content**，检查 **TCCCSDK.framework** 所需要动态库 **TXFFmpeg.xcframework**、**TXSoundTouch.xcframework**是否已经添加，是否正确选择选择 Embed & Sign，如果没有单击底下的“**+**”号图标依次添加。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/cf3177bd964b250e5cf39ed75c827b27.png)
+![](https://qcloudimg.tencent-cloud.cn/raw/dc38b18dbc8d0de4ec0ebdaf297a8a72.png)
 
 6. 在工程target中Build Settings的**Other Linker Flags**增加-ObjC配置。
 

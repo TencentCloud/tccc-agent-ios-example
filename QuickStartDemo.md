@@ -69,6 +69,6 @@
 
 基本功能如下图所示
 
-![](https://qcloudimg.tencent-cloud.cn/raw/4ecec9a9eb927fb711c21cf4004de49a.png)
+![](https://qcloudimg.tencent-cloud.cn/raw/38aa87531f0fdf95fe47c6ad76ea9bd1.png)
 
 
