@@ -72,19 +72,32 @@ public:
         std::string copyJson = makeString(info.customHeaderJson);
         auto sessionDirection = info.sessionDirection;
         if ([NSThread isMainThread]) {
-            
+            NSLog(@"<== onNewSession sessionID: %s , fromAor: %s , toAor: %s , sessionDirection: %d",copySessionID.c_str(),copyFrom.c_str(),copyTo.c_str(),info.sessionDirection);
             return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-           
+            NSLog(@"<== onNewSession sessionID: %s , fromAor: %s , toAor: %s , sessionDirection: %d",copySessionID.c_str(),copyFrom.c_str(),copyTo.c_str(),info.sessionDirection);
         });
     };
     
     void onEnded(EndedReason reason, const char* reasonMessage, const char* sessionId) {
         std::string copyReasonMessage = makeString(reasonMessage);
         std::string copySessionID = makeString(sessionId);
+        if (reason == EndedReason::Error) {
+            // 系统异常 + reasonMessage
+        } else if (reason == EndedReason::Timeout) {
+           // 超时挂断
+        } else if (reason == EndedReason::LocalBye) {
+            // 你已挂断
+        } else if (reason == EndedReason::RemoteBye) {
+            // 对方已挂断
+        } else if (reason == EndedReason::Rejected) {
+            // 对方已拒接
+        } else if (reason == EndedReason::RemoteCancel) {
+            // 对方已取消
+        }
         if ([NSThread isMainThread]) {
-           
+            
             return;
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -96,11 +109,11 @@ public:
     void onAccepted(const char* sessionId) {
         std::string copySessionID = makeString(sessionId);
         if ([NSThread isMainThread]) {
-           
+            NSLog(@"<== onAccepted sessionID: %s ",copySessionID.c_str());
             return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            
+            NSLog(@"<== onAccepted sessionID: %s ",copySessionID.c_str());
         });
     };
     
@@ -354,7 +367,7 @@ TCCCCommonCallback* logoutCallbackImpl = nullptr;
     if (nullptr == checkLoginCallbackImpl) {
         checkLoginCallbackImpl = new TCCCCommonCallback(@"checkLogin");
     }
-    // 退出登录
+    // 判断是否已登录
     tcccSDK->checkLogin(checkLoginCallbackImpl);
 }
 
