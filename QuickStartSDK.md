@@ -34,7 +34,7 @@
 
 6. 在工程target中Build Settings的**Other Linker Flags**增加-ObjC配置。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/111dc6a7c64aca96ca95010c6effb2be.png)
+![](https://qcloudimg.tencent-cloud.cn/raw/6a258480162aef4ca3626c388999bb9f.png)
 
 7. 配置 **Header Search Paths**。如下类似输入
 
@@ -48,11 +48,9 @@ $(PROJECT_DIR)/tccc-agent-ios-example/framework/TCCCSDK.framework/Headers
 ## 配置 App 权限
 1. 如需使用 SDK 提供的音视频功能，需要给 App 授权麦克风的使用权限。在 App 的 Info.plist 中添加以下两项，分别对应麦克风在系统弹出授权对话框时的提示信息。
 
-![](https://qcloudimg.tencent-cloud.cn/raw/35f2cfb2dfd2dbf4bac4d90a076e8473.png)
-
+  ![](https://qcloudimg.tencent-cloud.cn/raw/35f2cfb2dfd2dbf4bac4d90a076e8473.png)
 
   - Privacy - Microphone Usage Description，并填入麦克风使用目的提示语。
-
 
 
 2. 如需 App 进入后台仍然运行相关功能，可在 XCode 中选中当前工程项目，并在 Capabilities 下将设置项  Background Modes 设定为 ON，并勾选 Audio，AirPlay and Picture in Picture ，如下图所示：
