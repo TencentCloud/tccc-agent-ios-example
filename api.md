@@ -83,12 +83,12 @@ tcccSDK->logout(nullptr);
 ### 呼叫相关接口函数
 | API | 描述 |
 |-----|-----|
-| [call]() | 发起通话 |
-| [answer]() | 接听来电 |
-| [terminate ]() | 结束通话 |
-| [sendDTMF]() | 发送 DTMF（双音多频信号）|
-| [mute]() | 静音 |
-| [unmute]() | 取消静音 |
+| [call](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a44131b3f2307f59e84e8dc2547284468) | 发起通话 |
+| [answer](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#afb05a94c75ae0fdf80b400a560f90382) | 接听来电 |
+| [terminate ](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#ad246edc074358e8db219f524240c2e0e) | 结束通话 |
+| [sendDTMF](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a759c3add9cca0c158d8b76ddaf158b53) | 发送 DTMF（双音多频信号）|
+| [mute](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a2dad8c4fa7358a119203920194cc1983) | 静音 |
+| [unmute](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a154949474d50c76412757cbc9fb57ea1) | 取消静音 |
 #### 发起呼叫和结束呼叫示例代码
 ```c++
 class TCCCCommonCallback : public ITXCallback {
