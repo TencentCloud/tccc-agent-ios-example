@@ -70,7 +70,7 @@ param.userId = "";
 /// 登录票据，在登录模式为Agent必填。更多详情请参见[创建 SDK 登录
 /// Token](https://cloud.tencent.com/document/product/679/49227)
 param.token = "";
-/// 腾讯云呼叫中心应用ID，通常为1400开头
+/// 腾讯云联络中心应用ID，通常为1400开头
 param.sdkAppId = 0;
 // 必须知道为坐席模式
 param.type = TCCCLoginType::Agent;

@@ -106,7 +106,7 @@ class ITCCCWorkstation {
   /// @{
 
   /**
-   * 2.1 登录 TCCC 呼叫中心
+   * 2.1 登录 TCCC 联络中心
    *
    * @param loginParam 登录参数
    *
@@ -115,7 +115,7 @@ class ITCCCWorkstation {
   virtual void login(const TCCCLoginParams& loginParam, ITXValueCallback<TCCCLoginInfo>* callback) = 0;
 
   /**
-   * 2.2 退出 TCCC 呼叫中心
+   * 2.2 退出 TCCC 联络中心
    *
    * @param callback 退出成功与否回调
    */
