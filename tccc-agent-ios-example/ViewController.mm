@@ -6,8 +6,8 @@
 //
 
 #import "ViewController.h"
-#import "GenerateTestUserToken.h"
-#include "tccc/include/ITCCCWorkstation.h"
+#import "Debug/GenerateTestUserToken.h"
+#include "TCCCSDK/tccc/include/ITCCCWorkstation.h"
 #include <string>
 
 @interface ViewController ()
