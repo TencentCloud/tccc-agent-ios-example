@@ -9,6 +9,8 @@
 
 @interface ViewController : UIViewController
 
+- (void)writeFunCallLog:(NSString *)line;
+- (void)writeCallBackLog:(NSString *)line;
 
 @end
 
