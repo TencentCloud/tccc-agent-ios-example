@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1CD9C31B981820895F2CC372 /* Pods_tccc_agent_ios_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3735E61C8DBC28538FC1A5 /* Pods_tccc_agent_ios_example.framework */; };
+		E1ABD0282B81C09A00ADBBA4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */; };
+		E1ABD02A2B81C0A600ADBBA4 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */; };
 		E1C0C9C12B2AA20700639C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9C02B2AA20700639C21 /* AppDelegate.m */; };
 		E1C0C9C42B2AA20700639C21 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9C32B2AA20700639C21 /* SceneDelegate.m */; };
 		E1C0C9CA2B2AA20700639C21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C0C9C82B2AA20700639C21 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		77233312CB2703221DEA05D7 /* Pods-tccc-agent-ios-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tccc-agent-ios-example.debug.xcconfig"; path = "Target Support Files/Pods-tccc-agent-ios-example/Pods-tccc-agent-ios-example.debug.xcconfig"; sourceTree = "<group>"; };
+		E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = Pods/TCCCSDK_Ios/TCCCSDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
+		E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = Pods/TCCCSDK_Ios/TCCCSDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		E1C0C9BC2B2AA20700639C21 /* tccc-agent-ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tccc-agent-ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C0C9BF2B2AA20700639C21 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1C0C9C02B2AA20700639C21 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1ABD02A2B81C0A600ADBBA4 /* TXSoundTouch.xcframework in Frameworks */,
+				E1ABD0282B81C09A00ADBBA4 /* TXFFmpeg.xcframework in Frameworks */,
 				1CD9C31B981820895F2CC372 /* Pods_tccc_agent_ios_example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +70,8 @@
 		DC0AB0A565F07B7DA9CA3042 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */,
+				E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */,
 				FA3735E61C8DBC28538FC1A5 /* Pods_tccc_agent_ios_example.framework */,
 			);
 			name = Frameworks;
@@ -313,7 +321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -368,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -406,6 +414,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = com.tencent.tcccsdk.ios.demo_Development_SignProvision;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -440,6 +452,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = com.tencent.tcccsdk.ios.demo_Development_SignProvision;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
