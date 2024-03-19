@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CD9C31B981820895F2CC372 /* Pods_tccc_agent_ios_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3735E61C8DBC28538FC1A5 /* Pods_tccc_agent_ios_example.framework */; };
+		E104B2792BA934BD00BBCF30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E104B2782BA934BD00BBCF30 /* ViewController.m */; };
 		E1ABD0282B81C09A00ADBBA4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */; };
 		E1ABD02A2B81C0A600ADBBA4 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */; };
 		E1C0C9C12B2AA20700639C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9C02B2AA20700639C21 /* AppDelegate.m */; };
@@ -17,12 +18,12 @@
 		E1C0C9CF2B2AA20900639C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C0C9CE2B2AA20900639C21 /* Assets.xcassets */; };
 		E1C0C9D22B2AA20900639C21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1C0C9D02B2AA20900639C21 /* LaunchScreen.storyboard */; };
 		E1C0C9D52B2AA20900639C21 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9D42B2AA20900639C21 /* main.m */; };
-		E1C0C9DC2B2AA24600639C21 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9DB2B2AA24600639C21 /* ViewController.mm */; };
 		E1C0C9E02B2AA2DB00639C21 /* GenerateTestUserToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9DF2B2AA2DB00639C21 /* GenerateTestUserToken.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		77233312CB2703221DEA05D7 /* Pods-tccc-agent-ios-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tccc-agent-ios-example.debug.xcconfig"; path = "Target Support Files/Pods-tccc-agent-ios-example/Pods-tccc-agent-ios-example.debug.xcconfig"; sourceTree = "<group>"; };
+		E104B2782BA934BD00BBCF30 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = Pods/TCCCSDK_Ios/TCCCSDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = Pods/TCCCSDK_Ios/TCCCSDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		E1C0C9BC2B2AA20700639C21 /* tccc-agent-ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tccc-agent-ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +38,6 @@
 		E1C0C9D12B2AA20900639C21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1C0C9D32B2AA20900639C21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1C0C9D42B2AA20900639C21 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E1C0C9DB2B2AA24600639C21 /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		E1C0C9DE2B2AA2DB00639C21 /* GenerateTestUserToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateTestUserToken.h; sourceTree = "<group>"; };
 		E1C0C9DF2B2AA2DB00639C21 /* GenerateTestUserToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateTestUserToken.m; sourceTree = "<group>"; };
 		E72601F9D834C6D25B037BB5 /* Pods-tccc-agent-ios-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tccc-agent-ios-example.release.xcconfig"; path = "Target Support Files/Pods-tccc-agent-ios-example/Pods-tccc-agent-ios-example.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				E1C0C9DD2B2AA2A000639C21 /* Debug */,
-				E1C0C9DB2B2AA24600639C21 /* ViewController.mm */,
 				E1C0C9BF2B2AA20700639C21 /* AppDelegate.h */,
 				E1C0C9C02B2AA20700639C21 /* AppDelegate.m */,
 				E1C0C9C22B2AA20700639C21 /* SceneDelegate.h */,
@@ -111,6 +110,7 @@
 				E1C0C9D32B2AA20900639C21 /* Info.plist */,
 				E1C0C9D42B2AA20900639C21 /* main.m */,
 				E1C0C9CB2B2AA20700639C21 /* tccc_agent_ios_example.xcdatamodeld */,
+				E104B2782BA934BD00BBCF30 /* ViewController.m */,
 			);
 			path = "tccc-agent-ios-example";
 			sourceTree = "<group>";
@@ -238,10 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E104B2792BA934BD00BBCF30 /* ViewController.m in Sources */,
 				E1C0C9D52B2AA20900639C21 /* main.m in Sources */,
 				E1C0C9E02B2AA2DB00639C21 /* GenerateTestUserToken.m in Sources */,
 				E1C0C9C12B2AA20700639C21 /* AppDelegate.m in Sources */,
-				E1C0C9DC2B2AA24600639C21 /* ViewController.mm in Sources */,
 				E1C0C9C42B2AA20700639C21 /* SceneDelegate.m in Sources */,
 				E1C0C9CD2B2AA20700639C21 /* tccc_agent_ios_example.xcdatamodeld in Sources */,
 			);
