@@ -43,15 +43,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    
-    // 获取SDK版本号
-    NSString* version = [TCCCWorkstation getSDKVersion];
-    [self writeFunCallLog:[NSString stringWithFormat:@"tccc SDK version: %@", version]];
-    [self.tcccSDK addTcccListener:self];
+    [self initTcccSDK];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    
+    [self.tcccSDK removeTCCCListener:self];
+    [TCCCWorkstation destroySharedIntance];
+    _tcccSDK = nil;
 }
 
 - (void)initUI {
@@ -145,6 +145,13 @@
     [self.view addSubview:self.logView];
 }
 
+- (void)initTcccSDK {
+    // 获取SDK版本号
+    NSString* version = [TCCCWorkstation getSDKVersion];
+    [self writeFunCallLog:[NSString stringWithFormat:@"tccc SDK version: %@", version]];
+    
+    [self.tcccSDK addTcccListener:self];
+}
 
 - (void)getTokenButtonTapped:(UIButton *)sender {
     [self writeFunCallLog:[NSString stringWithFormat:@"genTestUserToken,userId= %@", self.seatUserIdField.text]];
@@ -244,29 +251,35 @@
 #pragma mark - TCCCDelegate
 
 - (void)onError:(TCCCErrorCode)errCode errMsg:(NSString * _Nonnull)errMsg extInfo:(nullable NSDictionary *)extInfo {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onError errorCode=%ld,errorMessage=%@", (long)errCode,errMsg]];
 }
 
 - (void)onWarning:(TCCCCWarningCode)warningCode warningMsg:(NSString *_Nonnull)warningMsg extInfo:(nullable NSDictionary *)extInfo {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onWarning warningMsg=%ld,warningMsg=%@", (long)warningCode,warningMsg]];
 }
 
 - (void)onNewSession:(TXSessionInfo *)info {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onNewSession sessionDirection=%ld, fromUserID=%@ ,sessionID=%@",info.sessionDirection, info.fromUserID,info.sessionID]];
 }
 
 - (void)onEnded:(TXEndedReason)reason reasonMessage:(NSString *_Nonnull)reasonMessage sessionId:(NSString *_Nonnull)sessionId {
-    [self writeCallBackLog:[NSString stringWithFormat:@"onEnded reason=%ld,reasonMessage=%@s ,sessionId=%@s", (long)reason,reasonMessage,sessionId]];
+    [self writeCallBackLog:[NSString stringWithFormat:@"onEnded reason=%ld,reasonMessage=%@  , sessionId=%@", (long)reason,reasonMessage,sessionId]];
 }
 
 - (void)onAccepted:(NSString *_Nonnull)sessionId {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onAccepted , sessionId=%@",sessionId]];
 }
 
 - (void)onConnectionLost:(TXServerType)serverType {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onConnectionLost , serverType=%ld",(long)serverType]];
 }
 
 - (void)onTryToReconnect:(TXServerType)serverType {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onTryToReconnect , serverType=%ld",(long)serverType]];
 }
 
-
 - (void)onConnectionRecovery:(TXServerType)serverType {
+    [self writeCallBackLog:[NSString stringWithFormat:@"onConnectionRecovery , serverType=%ld",(long)serverType]];
 }
 
 @end
