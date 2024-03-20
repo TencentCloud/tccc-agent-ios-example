@@ -35,6 +35,7 @@
 // 获取tcccSDK 单例
 - (TCCCWorkstation*)tcccSDK {
     if (!_tcccSDK) {
+        // 创建实例
         _tcccSDK = [TCCCWorkstation sharedInstance];
     }
     return _tcccSDK;
@@ -48,8 +49,9 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
+    // 移除TCCC事件回调
     [self.tcccSDK removeTCCCListener:self];
+    // 销毁实例
     [TCCCWorkstation destroySharedIntance];
     _tcccSDK = nil;
 }
@@ -149,7 +151,7 @@
     // 获取SDK版本号
     NSString* version = [TCCCWorkstation getSDKVersion];
     [self writeFunCallLog:[NSString stringWithFormat:@"tccc SDK version: %@", version]];
-    
+    // 设置TCCC事件回调
     [self.tcccSDK addTcccListener:self];
 }
 
@@ -170,9 +172,14 @@
 
 - (void)loginButtonTapped:(UIButton *)sender {
     TXLoginParams *param = [[TXLoginParams alloc] init];
+    // 登录的坐席ID，通常为邮箱地址
     param.userId = self.seatUserIdField.text;
+    // 登录票据，在登录模式为Agent必填。更多详情请参见[创建 SDK 登录
+    // Token](https://cloud.tencent.com/document/product/679/49227)
     param.token = self.tokenField.text;
+    // 腾讯云联络中心应用ID，通常为1400开头
     param.sdkAppId = SDKAppID;
+    // 设置为坐席模式
     param.type =  Agent;
     [self writeFunCallLog:[NSString stringWithFormat:@"[tcccSDK login] userId= %@", param.userId]];
     [self.tcccSDK login:param succ:^(TXLoginInfo * _Nonnull info) {
@@ -202,9 +209,12 @@
 
 - (void)startCallButtonTapped:(UIButton *)sender {
     TXStartCallParams *callParams = [[TXStartCallParams alloc] init];
+    // 呼叫的手机号
     callParams.to = TO;
+    // 号码备注，在通话条中会替代号码显示（可选）
     callParams.remark = @"testByIos";
     [self writeFunCallLog:[NSString stringWithFormat:@"[tcccSDK call] to= %@", callParams.to]];
+    // 发起外呼
     [self.tcccSDK call:callParams succ:^{
         [self writeCallBackLog:@"call success"];
     } fail:^(int code, NSString * _Nonnull desc) {
@@ -216,11 +226,13 @@
     sender.selected = !sender.selected;
     [self.muteButton setTitle:@"Mute" forState:UIControlStateNormal];
     [self writeFunCallLog:@"[tcccSDK mute]"];
+    // 静音
     [self.tcccSDK mute];
 }
 
 - (void)hangupButtonTapped:(UIButton *)sender {
     [self writeFunCallLog:@"[tcccSDK terminate]"];
+    // 结束通话
     [self.tcccSDK terminate];
 }
 
@@ -228,6 +240,7 @@
     sender.selected = !sender.selected;
     [self.speakerButton setTitle:@"Speaker" forState:UIControlStateNormal];
     [self writeFunCallLog:@"[[tcccSDK getDeviceManager()] setAudioRoute] ,TCCCAudioRouteSpeakerphone"];
+    // 切换为扬声器
     [[self.tcccSDK getDeviceManager] setAudioRoute:TCCCAudioRouteSpeakerphone];
 }
 
@@ -246,6 +259,27 @@
     NSString *appendedText = [NSString stringWithFormat:@"%@\n <== %@", self.logView.text,line];
     NSLog(@"%@", appendedText);
     self.logView.text = appendedText;
+}
+
+- (void)exampleCode {
+    // 检查登录状态
+    [self.tcccSDK checkLogin:^{
+        // 已登录
+    } fail:^(int code, NSString * _Nonnull desc) {
+        // 未登录或者被T了
+    }];
+    // 退出登录
+    [self.tcccSDK logout:^{
+        // 退出成功
+    } fail:^(int code, NSString * _Nonnull desc) {
+        // 退出异常
+    }];
+    // 接听来电
+    [self.tcccSDK answer:^{
+        // 接听成功
+    } fail:^(int code, NSString * _Nonnull desc) {
+        // 接听失败
+    }];
 }
 
 #pragma mark - TCCCDelegate
