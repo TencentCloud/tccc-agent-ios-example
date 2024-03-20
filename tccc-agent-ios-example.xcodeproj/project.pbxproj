@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1CD9C31B981820895F2CC372 /* Pods_tccc_agent_ios_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3735E61C8DBC28538FC1A5 /* Pods_tccc_agent_ios_example.framework */; };
 		E104B2792BA934BD00BBCF30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E104B2782BA934BD00BBCF30 /* ViewController.m */; };
+		E146E0A72BAAC437007C7310 /* TcccExampleSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146E0A62BAAC437007C7310 /* TcccExampleSwift.swift */; };
 		E1ABD0282B81C09A00ADBBA4 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */; };
 		E1ABD02A2B81C0A600ADBBA4 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */; };
 		E1C0C9C12B2AA20700639C21 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C0C9C02B2AA20700639C21 /* AppDelegate.m */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		77233312CB2703221DEA05D7 /* Pods-tccc-agent-ios-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tccc-agent-ios-example.debug.xcconfig"; path = "Target Support Files/Pods-tccc-agent-ios-example/Pods-tccc-agent-ios-example.debug.xcconfig"; sourceTree = "<group>"; };
 		E104B2782BA934BD00BBCF30 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E146E0A62BAAC437007C7310 /* TcccExampleSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TcccExampleSwift.swift; sourceTree = "<group>"; };
 		E1ABD0272B81C09A00ADBBA4 /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = Pods/TCCCSDK_Ios/TCCCSDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		E1ABD0292B81C0A600ADBBA4 /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = Pods/TCCCSDK_Ios/TCCCSDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		E1C0C9BC2B2AA20700639C21 /* tccc-agent-ios-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tccc-agent-ios-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 				E1C0C9D42B2AA20900639C21 /* main.m */,
 				E1C0C9CB2B2AA20700639C21 /* tccc_agent_ios_example.xcdatamodeld */,
 				E104B2782BA934BD00BBCF30 /* ViewController.m */,
+				E146E0A62BAAC437007C7310 /* TcccExampleSwift.swift */,
 			);
 			path = "tccc-agent-ios-example";
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				TargetAttributes = {
 					E1C0C9BB2B2AA20700639C21 = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1520;
 					};
 				};
 			};
@@ -241,6 +245,7 @@
 				E104B2792BA934BD00BBCF30 /* ViewController.m in Sources */,
 				E1C0C9D52B2AA20900639C21 /* main.m in Sources */,
 				E1C0C9E02B2AA2DB00639C21 /* GenerateTestUserToken.m in Sources */,
+				E146E0A72BAAC437007C7310 /* TcccExampleSwift.swift in Sources */,
 				E1C0C9C12B2AA20700639C21 /* AppDelegate.m in Sources */,
 				E1C0C9C42B2AA20700639C21 /* SceneDelegate.m in Sources */,
 				E1C0C9CD2B2AA20700639C21 /* tccc_agent_ios_example.xcdatamodeld in Sources */,
@@ -393,6 +398,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -421,6 +427,8 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -431,6 +439,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -459,6 +468,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
