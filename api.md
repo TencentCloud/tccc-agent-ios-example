@@ -3,38 +3,28 @@
 ### 创建实例和事件回调
 | API | 描述 |
 |-----|-----|
-| [getTCCCShareInstance](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a5f9c01b6f320d73299a8794fd1b113c2) | 创建 ITCCCWorkstation 实例（单例模式） |
-| [destroyTCCCShareInstance](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a291fad1a867e90296c28921c814abb96) | 销毁 ITCCCWorkstation 实例（单例模式）  |
-| [addCallback](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#aed44903d7d6bac8b95754071e6e03d92) | 添加 ITCCCWorkstation 事件回调 |
-| [removeCallback](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a129572ebab88dae9f4779df3da5c844a) | 移除 ITCCCWorkstation 事件回调 |
-
+| [sharedInstance](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a5f9c01b6f320d73299a8794fd1b113c2) | 创建 ITCCCWorkstation 实例（单例模式） |
+| [destroySharedIntance](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a291fad1a867e90296c28921c814abb96) | 销毁 ITCCCWorkstation 实例（单例模式）  |
+| [addTcccListener](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#aed44903d7d6bac8b95754071e6e03d92) | 添加 ITCCCWorkstation 事件回调 |
+| [removeTCCCListener](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a129572ebab88dae9f4779df3da5c844a) | 移除 ITCCCWorkstation 事件回调 |
 #### 创建实例和设置事件回调示例代码
-```c++
-#include "tccc/include/ITCCCWorkstation.h"
-using namespace tccc;
-// 创建实例和设置事件回调
-ITCCCWorkstation* tcccSDK = getTCCCShareInstance();
-// 设置回调，TCCCCallbackImpl 需要继承 ITCCCCallback
-class TCCCCallbackImpl:public ITCCCCallback {
-public:
-    TCCCCallbackImpl() {}
-    ~TCCCCallbackImpl() {}
+``` swift
+import TCCCSDK
 
-    void onError(TCCCError errCode, const char* errMsg, void* extraInfo) {}
-    
-    void onWarning(TCCCCWarning warningCode, const char* warningMsg, void* extraInfo) {}
+let tcccSDK: TCCCWorkstation = {
+    // 创建实例
+   return TCCCWorkstation.sharedInstance()
+}()
 
-    void onNewSession(TCCCSessionInfo info) {}
+// 设置TCCC事件回调
+tcccSDK.addTcccListener(self)
 
-    void onEnded(EndedReason reason, const char* reasonMessage, const char* sessionId) {}
-    
-};
-TCCCCallbackImpl* tcccCallback = new TCCCCallbackImpl();
-tcccSDK->addCallback(tcccCallback);
+// 移除TCCC事件回调
+tcccSDK.removeTCCCListener(self)
 // 销毁实例
-destroyTCCCShareInstance();
-tcccSDK = nullptr;
+TCCCWorkstation.destroySharedIntance()
 ```
+
 
 ### 登录相关接口函数
 | API | 描述 |
@@ -42,43 +32,42 @@ tcccSDK = nullptr;
 | [login](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#ac2e2626582978763ba1731335a2361da) | SDK 登录 |
 | [checkLogin](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#ac2e2626582978763ba1731335a2361da) | 检查 SDK 是否已登录 |
 | [logout](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#af57dce6ebc48d6dbd47c68c0efbb3377) | SDK 退出登录 |
-
 #### 登录示例代码
-```c++
-// 登录回调类
-class TCCCLoginCallbackImpl : public ITXValueCallback<TCCCLoginInfo> {
-public:
-    TCCCLoginCallbackImpl() {
-        
-    }
-    ~TCCCLoginCallbackImpl() override {}
-    void OnSuccess(const TCCCLoginInfo &value) override {
-        // 登录成功
-    }
-    
-    void OnError(TCCCError error_code, const char *error_message) override {
-        // 登录失败
-    }
-};
-TCCCLoginCallbackImpl* loginCallBackImpl = nullptr;
-if (nullptr == loginCallBackImpl) {
-  loginCallBackImpl = new TCCCLoginCallbackImpl();
-}
-TCCCLoginParams param;
-/// 登录的坐席ID，通常为邮箱地址
+``` swift
+import TCCCSDK
+
+let param = TXLoginParams()
+// 登录的坐席ID，通常为邮箱地址
 param.userId = "";
-/// 登录票据，在登录模式为Agent必填。更多详情请参见[创建 SDK 登录
-/// Token](https://cloud.tencent.com/document/product/679/49227)
+// 登录票据，在登录模式为Agent必填。更多详情请参见[创建 SDK 登录
+// Token](https://cloud.tencent.com/document/product/679/49227)
 param.token = "";
-/// 腾讯云联络中心应用ID，通常为1400开头
+// 腾讯云联络中心应用ID，通常为1400开头
 param.sdkAppId = 0;
-// 必须知道为坐席模式
-param.type = TCCCLoginType::Agent;
+// 设置为坐席模式
+param.type =  .Agent;
 // 登录
-tcccSDK->login(param,loginCallBackImpl);
+tcccSDK.login(param) { info in
+    // 登录成功
+} fail: { code, message in
+    // 登录失败
+}
+
+// 检查登录状态
+tcccSDK.checkLogin {
+  // 已登录
+} fail: { code, message in
+  // 未登录或者被T了
+}
+
 // 退出登录
-tcccSDK->logout(nullptr);
+tcccSDK.logout {
+  // 退出成功
+} fail: { code, message in
+  // 退出异常
+}
 ```
+
 
 ### 呼叫相关接口函数
 | API | 描述 |
@@ -90,37 +79,22 @@ tcccSDK->logout(nullptr);
 | [mute](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a2dad8c4fa7358a119203920194cc1983) | 静音 |
 | [unmute](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a154949474d50c76412757cbc9fb57ea1) | 取消静音 |
 #### 发起呼叫和结束呼叫示例代码
-```c++
-class TCCCCommonCallback : public ITXCallback {
-private:
-    NSString* mFunName;
-public:
-    TCCCCommonCallback(NSString* funName) {
-        mFunName = funName;
-    }
-    ~TCCCCommonCallback() override {
-        
-    }
-    void OnSuccess() override {
-      // 成功
-    }
-    
-    void OnError(TCCCError error_code, const char *error_message) override {
-        std::string copyErrMsg = makeString(error_message);
-      // 失败
-    }
-};
-TCCCCommonCallback* startCallCallbackImpl = nullptr;
-if (nullptr == startCallCallbackImpl) {
-  startCallCallbackImpl = new TCCCCommonCallback(@"startCall");
-}
-TCCCStartCallParams callParams;
-//呼叫的手机号
+``` swift
+import TCCCSDK
+
+let callParams = TXStartCallParams()
+// 呼叫的手机号
 callParams.to = "";
+// 号码备注，在通话条中会替代号码显示（可选）
+callParams.remark = "";
 // 发起外呼
-tcccSDK->call(callParams, startCallCallbackImpl);
+tcccSDK.call(callParams) {
+    // 发起呼叫成功
+} fail: { code, message in
+    // 发起呼叫失败
+}
 // 结束通话
-tcccSDK->terminate();
+tcccSDK.terminate()
 ```
 
 
@@ -132,6 +106,17 @@ tcccSDK->terminate();
 | [setAudioPlayoutVolume](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_device_manager.html#ada5d60cce32407134b3cbef4cec01e7d) | 设定远端音频的播放音量 |
 | [getAudioPlayoutVolume](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_device_manager.html#ae22d9e1dff2e2c7184d40428cd94e1bd) | 获取远端音频的播放音量 |
 | [setAudioRoute](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#af6fc1a15608fdaebc0dec7cc006ba441) | 设置音频路由 |
+### 切换音频路由示例代码
+``` swift
+import TCCCSDK
+
+// 切换为扬声器
+tcccSDK.getDeviceManager().setAudioRoute(.TCCCAudioRouteSpeakerphone)
+// 静音
+tcccSDK.mute()
+// 取消静音
+tcccSDK.unmute()
+```
 
 
 ### 调试相关接口
@@ -141,11 +126,12 @@ tcccSDK->terminate();
 | [setLogLevel](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#adc38b8e5f7c7bbb52913133a09c660c3) | 设置 Log 输出级别 |
 | [setConsoleEnabled](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#ac96dc3ba8d3ee4415cdbdc66cd604526) | 启用/禁用控制台日志打印 |
 | [callExperimentalAPI](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_workstation.html#a5496b58b1c9c5300ae10414d4a7f9222) | 调用实验性接口 |
-
 #### 获取SDK版本示例代码
-```c++
-// 获取SDK 版本号
-tcccSDK->getSDKVersion();
+``` swift
+import TCCCSDK
+
+// 获取SDK版本号
+let version = TCCCWorkstation.getSDKVersion()
 ```
 
 
@@ -154,22 +140,21 @@ tcccSDK->getSDKVersion();
 |-----|-----|
 | [onError](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#a91194f813d01fb57815d779098de8ed5) | 错误事件回调 |
 | [onWarning](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#a5262b33074879d9e833c29a97ee42c14) | 警告事件回调 |
-
 #### 处理错误回调事件回调示例代码
-```c++
-// 设置回调，TCCCCallbackImpl 需要继承 ITCCCCallback
-class TCCCCallbackImpl:public ITCCCCallback {
-public:
-    TCCCCallbackImpl() {}
-    ~TCCCCallbackImpl() {}
+``` swift
+import TCCCSDK
+
+func onError(_ errCode: TCCCErrorCode, errMsg: String, extInfo: [AnyHashable : Any]?) {
     // 错误事件回调
-    void onError(TCCCError errCode, const char* errMsg, void* extraInfo) {}
+}
+func onWarning(_ warningCode: TCCCCWarningCode, warningMsg: String, extInfo: [AnyHashable : Any]?) {
     // 警告事件回调
-    void onWarning(TCCCCWarning warningCode, const char* warningMsg, void* extraInfo) {}
-};
-TCCCCallbackImpl* tcccCallback = new TCCCCallbackImpl();
-tcccSDK->addCallback(tcccCallback);
+}
+
+// 设置TCCC事件回调
+tcccSDK.addTcccListener(self)
 ```
+
 
 ### 呼叫相关事件回调
 | API | 描述 |
@@ -178,23 +163,22 @@ tcccSDK->addCallback(tcccCallback);
 | [onEnded](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#a7429f478a0bb871d2d31e74ad423cd07) | 会话结束事件 |
 | [onAudioVolume](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#afcfe494e91225992c91e8569cf4e7b4c) | 音量大小的反馈回调 |
 | [onNetworkQuality ](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#a63ccb82554e524240d318e8df9f2c1ca) | 网络质量的实时统计回调 |
-
 #### 处理接听和坐席挂断事件回调示例代码
+``` swift
+import TCCCSDK
 
-```c++
-// 设置回调，TCCCCallbackImpl 需要继承 ITCCCCallback
-class TCCCCallbackImpl:public ITCCCCallback {
-public:
-    TCCCCallbackImpl() {}
-    ~TCCCCallbackImpl() {}
+func onNewSession(_ info: TXSessionInfo) {
     // 新会话事件。包括呼入和呼出
-    void onNewSession(TCCCSessionInfo info) {}
-    // 会话结束事件
-    void onEnded(EndedReason reason, const char* reasonMessage, const char* sessionId) {}
-    
-};
-TCCCCallbackImpl* tcccCallback = new TCCCCallbackImpl();
-tcccSDK->addCallback(tcccCallback);
+}
+func onAccepted(_ sessionId: String) {
+    // 对端已接听事件
+}
+func onEnded(_ reason: TXEndedReason, reasonMessage: String, sessionId: String) {
+    // 通话结束事件
+}
+
+// 设置TCCC事件回调
+tcccSDK.addTcccListener(self)
 ```
 
 
@@ -204,26 +188,23 @@ tcccSDK->addCallback(tcccCallback);
 | [onConnectionLost](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#ad80d24863ae3906e96809d5caa26d392) | SDK 与云端的连接已经断开 |
 | [onTryToReconnect](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#abafd1254e57eda469ae04c7073227752) | SDK 正在尝试重新连接到云端 |
 | [onConnectionRecovery](https://tccc.qcloud.com//assets/doc/Agent/CppAPI/classtccc_1_1_i_t_c_c_c_callback.html#a881626fcdb9468c7a00a7419f5e1dc40) | SDK 与云端的连接已经恢复 |
-
 #### 与云端连接情况的事件回调示例代码
+``` swift
+import TCCCSDK
 
-```c++
-// 设置回调，TCCCCallbackImpl 需要继承 ITCCCCallback
-class TCCCCallbackImpl:public ITCCCCallback {
-public:
-    TCCCCallbackImpl() {}
-    ~TCCCCallbackImpl() {}
+func onConnectionLost(_ serverType: TXServerType) {
     // SDK 与云端的连接已经断开
-    void onConnectionLost(TCCCServerType serverType) {}
-    // SDK 正在尝试重新连接到云端
-    void onTryToReconnect(TCCCServerType serverType) {}
+}
+func onConnectionRecovery(_ serverType: TXServerType) {
     // SDK 与云端的连接已经恢复
-    void onConnectionRecovery(TCCCServerType serverType) {}
-};
-TCCCCallbackImpl* tcccCallback = new TCCCCallbackImpl();
-tcccSDK->addCallback(tcccCallback);
-```
+}
+func onTry(toReconnect serverType: TXServerType) {
+    // SDK 正在尝试重新连接到云端
+}
 
+// 设置TCCC事件回调
+tcccSDK.addTcccListener(self)
+```
 
 
 ## API 错误码
